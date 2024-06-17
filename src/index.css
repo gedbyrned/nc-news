@@ -3,9 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,7 +22,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -46,23 +43,33 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+
+.main-header {
+border: rgb(60, 60, 133) solid 5px;
+color: rgb(60, 60, 133);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.nav {
+border: orangered solid 5px;
+color: orangered;
+}
+
+.article-title{
+color: black;
+font-weight: bold;
+font-size: 20px
+}
+
+.article-list {
+border: green solid 5px;
+color: green;
+}
+
+.article {
+border: green solid 2px
+}
+
+img {
+  max-height: 15rem;
 }
