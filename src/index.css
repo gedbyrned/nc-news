@@ -54,3 +54,12 @@ border: green solid 2px
 img {
   max-height: 15rem;
 }
+
+.comment-ul {
+  border: rgb(57, 200, 243) solid 5px;
+  color: black;
+}
+
+.comment-li {
+  border: rgb(57, 200, 243) solid 3px;
+}
