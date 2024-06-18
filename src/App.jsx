@@ -1,28 +1,36 @@
-import { useState, useEffect } from 'react'
-import Header from './components/Header'
-import Nav from './components/Nav'
-import Articles from './components/Articles'
-import { getArticles } from './utils/Api'
-import './App.css'
+import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import Articles from "./components/Articles";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import SelectArticle from "./components/SelectArticle";
+import { getArticles } from "./utils/Api";
 
-function App() {
+const App = () => {
   const [articles, setArticles] = useState([]);
 
-   useEffect(() => {
-  getArticles().then((response) => {
-    setArticles(response);
-  })
-  
-   }, [])
-
+  useEffect(() => {
+    getArticles().then((response) => {
+      setArticles(response);
+    });
+  }, []);
 
   return (
-   <>
-     <Header />
-     <Nav />
-      <Articles articles={articles}/>
-   </>
-  )
-}
+    <>
+      <div>
+        <Header />
+        <Nav />
+        <Routes>
+          <Route path="/articles" element={<Articles articles={articles} />} />
+          <Route
+           path="/articles/:article_id"
+           element={<SelectArticle />}
+          />
+        </Routes>
+      </div>
+    </>
+  );
+};
 
-export default App
+export default App;
