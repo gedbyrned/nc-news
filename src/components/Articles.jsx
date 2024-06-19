@@ -11,11 +11,12 @@ const Articles = ({ articles }) => {
       <ul>
         {articles.map((article) => {
           return (
-            <li className="article" key={article.article_id}>
+            <li className="article-list" key={article.article_id}>
+              <img src={article.article_img_url} alt={article.title} />
+              <br></br>
               <Link className="article-title" to={`/articles/${article.article_id}`}>
                 {article.title}
               </Link>
-              <img src={article.article_img_url} alt={article.title} />
             </li>
           );
         })}
