@@ -42,3 +42,22 @@ export const getArticles = () => {
         console.log(err);
       });
   };
+
+  export const updateArticle = (article_id, voteChange) => {
+    return ncNewsApi
+      .patch(`/articles/${article_id}`, { inc_votes: voteChange })
+      .then(({ data }) => {
+        return data.article;
+      });
+  };
+
+
+export const addComment = (article_id, newComment) => {
+  return ncNewsApi
+  .post(`/articles/${article_id}/comments`, {
+    votes: newComment.votes,
+    created_at: newComment.created_at,
+    author: newComment.author,
+    body: newComment.body
+  });
+};
