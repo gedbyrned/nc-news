@@ -58,3 +58,8 @@ export const getArticles = () => {
     .post(`/articles/${article_id}/comments`, newComment)
 }
   
+export const deleteComment = (commentId) => {
+  console.log(commentId)
+  return ncNewsApi
+    .delete(`/comments/${commentId}`)
+};

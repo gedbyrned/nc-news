@@ -50,6 +50,7 @@ const SelectArticle = () => {
         <p>{article.body}</p>
       </article>
     <Comments articleId={article_id} commentsById={commentsById} setCommentsById={setCommentsById} />
+    
     </>
   );
 };

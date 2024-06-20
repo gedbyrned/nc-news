@@ -1,10 +1,22 @@
+import { useState } from "react";
+import { deleteComment } from "../utils/Api";
 import NewComment from "./NewComment";
-const Comments = ({ articleId, commentsById, setCommentsById } ) => {
 
- 
-    return (
-        <>      
-        <section>
+const Comments = ({ articleId, commentsById, setCommentsById }) => {
+  
+  const handleDeleteComment = (commentId) => {
+    console.log(commentId);
+    deleteComment(commentId).then(() => {
+      const updatedComments = commentsById.filter((comment) => {
+       return comment.comment_id !== commentId;
+      });
+      setCommentsById(updatedComments);
+    });
+  };
+
+  return (
+    <>
+      <section>
         <ul className="comment-ul">
           {" "}
           Comments
@@ -18,15 +30,22 @@ const Comments = ({ articleId, commentsById, setCommentsById } ) => {
                 Created: {comment.created_at}
                 <br />
                 Votes: {comment.votes}
+                <br />
+                <button onClick={() => handleDeleteComment(comment.comment_id)}>
+                  DELETE
+                </button>
               </li>
             );
           })}
         </ul>
-          <NewComment articleId={articleId} commentsById={commentsById} setCommentsById={setCommentsById}/> 
+        <NewComment
+          articleId={articleId}
+          commentsById={commentsById}
+          setCommentsById={setCommentsById}
+        />
       </section>
     </>
-    )
-}
-
+  );
+};
 
 export default Comments;
