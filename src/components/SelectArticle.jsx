@@ -1,3 +1,4 @@
+
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticleById, getCommentsById, updateArticle } from "../utils/Api";
@@ -6,22 +7,23 @@ import Comments from "./Comments";
 const SelectArticle = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [commentsById, setCommentsById] = useState({});
+
+  const [commentsById, setCommentsById] = useState([]);
+
   const [votes, setVotes] = useState(0)
 
   useEffect(() => {
     getArticleById(article_id).then((response) => {
         console.log(response)
       setArticle(response);
-        setVotes(response.votes)
+      setVotes(response.votes);
     });
-  }, [article_id]);
 
-  useEffect(() => {
     getCommentsById(article_id).then((response) => {
       setCommentsById(response);
     });
   }, [article_id]);
+
 
   const handleUpvoteClick = () => {
     setVotes((currentVotes) => currentVotes + 1);
@@ -51,7 +53,10 @@ const SelectArticle = () => {
         <img src={article.article_img_url} alt={article.title} />
         <p>{article.body}</p>
       </article>
-    <Comments commentsById={commentsById} setCommentsById={setCommentsById} />
+
+    <Comments articleId={article_id} commentsById={commentsById} setCommentsById={setCommentsById} />
+    
+
     </>
   );
 };

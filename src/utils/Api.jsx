@@ -52,12 +52,14 @@ export const getArticles = () => {
   };
 
 
-export const addComment = (article_id, newComment) => {
+  export const addComment = (article_id, newComment) => {
+    console.log(newComment)
+    return ncNewsApi
+    .post(`/articles/${article_id}/comments`, newComment)
+}
+  
+export const deleteComment = (commentId) => {
+  console.log(commentId)
   return ncNewsApi
-  .post(`/articles/${article_id}/comments`, {
-    votes: newComment.votes,
-    created_at: newComment.created_at,
-    author: newComment.author,
-    body: newComment.body
-  });
+    .delete(`/comments/${commentId}`)
 };
