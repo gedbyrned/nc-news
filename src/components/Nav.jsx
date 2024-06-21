@@ -14,7 +14,6 @@ const Nav = () => {
   return (
     <nav className="nav">
       <ul className="nav-ul">
-        <li>User Login</li>
         <li>
           <Link className="link" to="/articles">
             All Articles

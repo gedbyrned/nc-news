@@ -5,9 +5,23 @@ import { Link } from "react-router-dom";
 const Articles = ({ articles }) => {
  
   return (
-    <section className="article-list">
-      <h2>All Articles</h2>
+    <main>
+    <button className="dropdown-button">Sort by dropdown...</button>
+  
+    <p>sort by date </p>
+    <p>sort by comment count</p>
+    <p>sort by votes</p>
+    <p>flip the order between ascending and descending </p>
 
+    <button>Ascending/Descending</button>
+    <br />
+    <br />
+
+
+
+    <article className="article-list">
+      <h2>All Articles</h2>
+    
       <ul>
         {articles.map((article) => {
           return (
@@ -21,7 +35,9 @@ const Articles = ({ articles }) => {
           );
         })}
       </ul>
-    </section>
+    </article>
+
+    </main>
   );
 };
 

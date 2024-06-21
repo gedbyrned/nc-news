@@ -23,12 +23,13 @@ const App = () => {
         <Header />
         <Nav />
         <Routes>
+          
           <Route path="/articles" element={<Articles articles={articles} />} />
           <Route
            path="/articles/:article_id"
            element={<SelectArticle />}
           />
-            <Route path="/topics/:topic_slug" element={<TopicArticles />} />
+          <Route path="/topics/:topic_slug" element={<TopicArticles />} />
         </Routes>
       </div>
     </>
