@@ -14,7 +14,6 @@ const SelectArticle = () => {
 
   useEffect(() => {
     getArticleById(article_id).then((response) => {
-        console.log(response)
       setArticle(response);
       setVotes(response.votes);
     });

@@ -1,18 +1,23 @@
-
 import { useState } from "react";
 import { deleteComment } from "../utils/Api";
 import NewComment from "./NewComment";
 
 const Comments = ({ articleId, commentsById, setCommentsById }) => {
-  
+  const [error, setError] = useState(null);
+
   const handleDeleteComment = (commentId) => {
-    console.log(commentId);
-    deleteComment(commentId).then(() => {
-      const updatedComments = commentsById.filter((comment) => {
-       return comment.comment_id !== commentId;
+    deleteComment(commentId)
+      .then(() => {
+        const updatedComments = commentsById.filter(
+          (comment) => {
+            return comment.comment_id !== commentId
+          });
+        setCommentsById(updatedComments);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
       });
-      setCommentsById(updatedComments);
-    });
   };
 
   return (
@@ -32,13 +37,20 @@ const Comments = ({ articleId, commentsById, setCommentsById }) => {
                 <br />
                 Votes: {comment.votes}
                 <br />
-                <button onClick={() => handleDeleteComment(comment.comment_id)}>
+                <button
+                  onClick={() => {
+                    if (comment.author === "jessjelly") {
+                      handleDeleteComment(comment.comment_id);
+                    }
+                  }}
+                >
                   DELETE
                 </button>
               </li>
             );
           })}
         </ul>
+        {error && <p>{error}</p>}
         <NewComment
           articleId={articleId}
           commentsById={commentsById}
