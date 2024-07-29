@@ -13,6 +13,7 @@ const App = () => {
 
   useEffect(() => {
     getArticles().then((response) => {
+      console.log(response)
       setArticles(response);
     });
   }, []);
