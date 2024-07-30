@@ -4,12 +4,14 @@ const ncNewsApi = axios.create({
   baseURL: "https://geds-api-remote-2.onrender.com/api",
 });
 
-export const getArticles = () => {
+export const getArticles = ({ sort_by = 'created_at', order = 'desc', limit = 5, p = 1 } = {}) => {
   return ncNewsApi
     .get("/articles", {
       params: {
-        limit: 5,
-        p: 1,
+        sort_by,
+        order,
+        limit,
+        p,
       },
     })
     .then(({ data }) => {
@@ -80,11 +82,15 @@ export const getTopics = () => {
     });
 };
 
-export const getArticlesByTopic = (topic_slug) => {
+export const getArticlesByTopic = (topic_slug, { sort_by = 'created_at', order = 'desc', limit = 5, p = 1 } = {}) => {
   return ncNewsApi
     .get(`/articles`, {
       params: {
         topic: topic_slug,
+        sort_by,
+        order,
+        limit,
+        p,
       },
     })
     .then(({ data }) => {
