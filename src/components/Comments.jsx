@@ -9,9 +9,8 @@ const Comments = ({ articleId, commentsById, setCommentsById }) => {
     deleteComment(commentId)
       .then(() => {
         const updatedComments = commentsById.filter(
-          (comment) => {
-            return comment.comment_id !== commentId
-          });
+          (comment) => comment.comment_id !== commentId
+        );
         setCommentsById(updatedComments);
         setError(null);
       })
@@ -21,43 +20,36 @@ const Comments = ({ articleId, commentsById, setCommentsById }) => {
   };
 
   return (
-    <>
-      <section>
-        <ul className="comment-ul">
-          {" "}
-          Comments
-          {Object.values(commentsById).map((comment) => {
-            return (
-              <li className="comment-li" key={comment.comment_id}>
-                By: {comment.author}
-                <br />
-                {comment.body}
-                <br />
-                Created: {comment.created_at}
-                <br />
-                Votes: {comment.votes}
-                <br />
+    <section className="container my-4">
+      <h3 className="text-center mb-4">Comments</h3>
+      {error && <p className="text-danger text-center">{error}</p>}
+      <ul className="list-unstyled">
+        {Object.values(commentsById).map((comment) => (
+          <li className="mb-3 border p-3 rounded" key={comment.comment_id}>
+            <div className="d-flex flex-column align-items-start">
+              <p className="mb-1"><strong>By:</strong> {comment.author}</p>
+              <p className="mb-1"><strong>Created:</strong> {new Date(comment.created_at).toLocaleString()}</p>
+              <p className="mb-1"><strong>Votes:</strong> {comment.votes}</p>
+              <p className="mb-2">{comment.body}</p>
+              {comment.author === "jessjelly" && (
                 <button
-                  onClick={() => {
-                    if (comment.author === "jessjelly") {
-                      handleDeleteComment(comment.comment_id);
-                    }
-                  }}
+                  onClick={() => handleDeleteComment(comment.comment_id)}
+                  className="btn btn-danger size"
+                  
                 >
                   DELETE
                 </button>
-              </li>
-            );
-          })}
-        </ul>
-        {error && <p>{error}</p>}
-        <NewComment
-          articleId={articleId}
-          commentsById={commentsById}
-          setCommentsById={setCommentsById}
-        />
-      </section>
-    </>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+      <NewComment
+        articleId={articleId}
+        commentsById={commentsById}
+        setCommentsById={setCommentsById}
+      />
+    </section>
   );
 };
 

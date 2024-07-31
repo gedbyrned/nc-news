@@ -10,30 +10,14 @@ border: rgb(60, 60, 133) solid 5px;
 color: rgb(60, 60, 133);
 }
 
-.nav-ul {
-border: orangered solid 5px;
-color: orangered;
-display: flex;       /* Use flexbox layout */
-list-style-type: none; /* Remove default list bullets */
-padding: 0;          /* Remove default padding */
-margin: 0 10px;           /* Remove default margin */
+.nav-item {
+  margin-right: 1rem; /
 }
 
-.nav {
-  border: orangered solid 5px;
-  color: orangered;
+.nav-item:last-child {
+  margin-right: 0; 
 }
 
-.nav-ul {
-  display: flex;       
-  list-style-type: none;
-  padding: 0;           
-  margin: 0;            
-}
-
-.nav-ul li {
-  margin: 0 15px;      
-}
 
 .article-title{
 color: black;
@@ -42,8 +26,8 @@ font-size: 20px
 }
 
 .article-list {
-border: green solid 5px;
-color: green;
+
+color: black;
 list-style-type: none;
 }
 

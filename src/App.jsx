@@ -7,6 +7,8 @@ import { Routes, Route } from "react-router-dom";
 import SelectArticle from "./components/SelectArticle";
 import { getArticles } from "./utils/Api";
 import TopicArticles from "./components/TopicArticles";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
   const [articles, setArticles] = useState([]);
