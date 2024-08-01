@@ -47,3 +47,17 @@ img {
 .comment-li {
   border: rgb(57, 200, 243) solid 3px;
 }
+
+.logo-link {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-link img {
+  transition: transform 0.3s ease;
+}
+
+.logo-link img:hover {
+  transform: scale(1.1);
+  cursor: pointer; 
+}

@@ -9,8 +9,4 @@ This app details NC-News site detailing various articles across the Northcoders 
 
 The minimum version of Node.js required is v21.7.1
 
-
-Clear instructions on how to run your project locally, e.g. git clone <repo-url>, cd..., etc.
-
-
 This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
