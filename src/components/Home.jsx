@@ -9,13 +9,13 @@ const Home = () => {
       <p>Please use the Navigation bar above to view all articles, alternatively you can browse by topic.</p>
       <br />
       <a 
-        href="linkedin.com/in/gerard-byrne-b0b731149" 
+        href="https://www.linkedin.com/in/gerard-byrne-b0b731149" 
         target="_blank" 
         rel="noopener noreferrer"
         className="logo-link"
       >
         <img 
-          src={logo} // Use the imported image
+          src={logo} 
           className="img-fluid" 
           alt="lrg" 
         />
